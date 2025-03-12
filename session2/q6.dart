@@ -1,3 +1,5 @@
+import 'dart:io';
+
 void main() {
   /*
 If Condition with String Comparison
@@ -6,8 +8,12 @@ Instructions:
 - Create a string variable password and set it to 'secret'.
 - If password equals 'secret', print 'Access granted', otherwise print 'Access denied'.
    */
-  String password = "Secret";
-  (password == "Secret") ? print("Access granted 🔓") : print("Access Denied 🔐");
+  String? password;
+  stdout.write("Please Enter if the user's password is secret or Not: ");
+  String input = stdin.readLineSync()!  ?? "".trim();
+  password = input.toLowerCase();
+
+  (password == "secret") ? print("Access granted 🔓") : print("Access Denied 🔐");
 
   /*
   if (password == "Secret") {

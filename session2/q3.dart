@@ -8,6 +8,6 @@ Instructions:
 - Check if the number 20 is present in the set and print the result.
    */
   Set <int> uniqueNumbers = {10, 20, 30, 40};
-  print("The length of the list of $uniqueNumbers ➡️ ${uniqueNumbers.length}");
+  print("The length of the set of $uniqueNumbers ➡️ ${uniqueNumbers.length}");
   print("The number 20 is present in the set $uniqueNumbers ➡️ ${uniqueNumbers.contains(20)}");
 }
