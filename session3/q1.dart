@@ -7,42 +7,57 @@ Create a Dart program that takes two numbers as input and performs addition,
 subtraction, multiplication, and division using variables, arithmetic operators, and functions.
 Also, include optional parameters for different operations (e.g., addition of multiple numbers).
    */
-
-  MyCalculator x = MyCalculator(number1: 100, operator: "+", number2: 10);
-  print(x.calculate());
-
-  MyCalculator y = MyCalculator(number1: 2000, operator: "*", number2: 20, number3: 10);
-  print(y.calculate());
+  Calculator x = Calculator(z: 10, x: 100, operator: "+", y: 20);
+  x.operation();
 }
 
-
-class MyCalculator {
-  double number1;
-  double number2;
-  double? number3;
+class Calculator {
+  double x;
+  double y;
+  double? z;
   String operator;
 
-  MyCalculator({required this.number1, required this.operator, required this.number2, this.number3});
+  Calculator(
+      {this.z, required this.x, required this.operator, required this.y});
 
-  double? calculate(){
+  double addition() {
+    return x + y + (z ?? 0);
+  }
+
+  double subtraction() {
+    return x - y - (z ?? 0);
+  }
+
+  double multiplication() {
+    return x * y * (z ?? 1);
+  }
+
+  double division() {
+    if (y != 0) {
+      return x / y / (z ?? 1);
+    } else {
+      print("Can't divide by Zero");
+      return double.nan;
+    }
+  }
+
+  void operation() {
     switch (operator) {
       case "+":
-        return number1 + number2 +(number3 ?? 0);
+        print("The result of the addition = ${addition()}");
+        break;
       case "-":
-        return number1 - number2 -(number3 ?? 0);
+        print("The result of the subtraction = ${subtraction()}");
+        break;
       case "*":
-        return number1 * number2 *(number3 ?? 1);
+        print("The result of the multiplication = ${multiplication()}");
+        break;
       case "/":
-        if(number2 == 0|| (number3 != null && number3 == 0)){
-          print("Invalid division by Zero");
-        } else {
-          return number1 / number2 /(number3 ?? 1);
-        }
-      case "%":
-        return (number3 == null) ?  number1 % number2 : number1 % number2 ;
+        print("The result of the division = ${division()}");
+        break;
       default:
-        print("Invalid operation");
-        return null;
+        print(
+            "Invalid Operator.\n Please, Select one of this operations [+, -, *, /]");
     }
   }
 }
