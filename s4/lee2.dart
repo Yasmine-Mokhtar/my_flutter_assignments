@@ -1,22 +1,23 @@
 void main() {
-
-  List<int> nums = [1, 1, 1, 3, 3, 4, 3, 2, 4, 2];
-  bool isRepeated = false;
-  for (int i = 0; i < nums.length; i++) {
-    for (int j = i + 1; j < nums.length; j++) {
-      if (nums[i] == nums[j]) {
-        isRepeated = true;
-        break;
-      }
-    }
-    if (isRepeated) {
-      break;
-    }
-  }
-  print(isRepeated);
+  Solution x = Solution();
+  print(x.containsDuplicate([1, 2, 3, 1]));
+  print(x.containsDuplicate([1, 2, 3, 4]));
+  print(x.containsDuplicate([1, 1, 1, 3, 3, 4, 3, 2, 4, 2]));
 }
 
-// LeetCode doesn't accept this solution
+class Solution {
+  bool containsDuplicate(List<int> nums) {
+    Set<int> seen = {};
+
+    for (int num in nums) {
+      if (seen.contains(num)) {
+        return true;
+      }
+      seen.add(num);
+    }
+    return false;
+  }
+}
 
 /*
   Given an integer array nums, return true if any value appears at least twice in the array,
